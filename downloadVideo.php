@@ -4,7 +4,7 @@ if (!isset($_GET['videoId'])) {
     die('Invalid invocation of file');
 }
 
-$filename = $_GET['videoId'] . ".zip";
+$filename = $_GET['videoId'] . ".mp4";
 $filepath = "/app/";
 
 // http headers for zip downloads 
