@@ -21,7 +21,7 @@
 		  exec("chmod a+rx youtube-dl");
 		  exec("tar xvzf files.tar.gz");
 		  
-		  $downloadVideoAndZipQuery = "./youtube-dl -f ".$videoFormat." --playlist-items ".$playlistId." ".$videoUrl." --add-metadata --ffmpeg-location /app/ffmpeg --no-warnings --exec 'zip -D -m -9 -v ".$videoId.".zip {}'";
+		  $downloadVideoAndZipQuery = "./youtube-dl -f ".$videoFormat." --playlist-items ".$playlistId." ".$videoUrl." --add-metadata --ffmpeg-location /app/ffmpeg --no-warnings --exec 'mp4 -D -m -9 -v ".$videoId.".mp4 {}'";
 		  
 		  $process = new Process($downloadVideoAndZipQuery);
 	   $process->start();
