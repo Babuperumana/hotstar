@@ -23,7 +23,7 @@ if (isset($_POST['src'])) {
         $videoFormat = $_POST['videoFormat'];
         
         
-        $downloadVideoAndZipQuery = "./youtube-dl -f " . $videoFormat . " --playlist-items " . $playlistId . " " . $videoUrl . " --add-metadata --ffmpeg-location /app/ffmpeg --no-warnings --exec 'zip -D -m -9 -v " . $videoId . ".zip {}'";
+        $downloadVideoAndZipQuery = "./youtube-dl -f " . $videoFormat . " --playlist-items " . $playlistId . " " . $videoUrl . " --add-metadata --ffmpeg-location /app/ffmpeg --no-warnings --exec 'mp4 -D -m -9 -v " . $videoId . ".mp4 {}'";
         
         $process = new Process($downloadVideoAndZipQuery);
         $process->setTimeout(30 * 60); //wait for atleast dyno inactivity time for the process to complete
@@ -43,7 +43,7 @@ if (isset($_POST['src'])) {
         
         $outputFileName = $videoId . ".ts";
         
-        $zipOutputQuery = "zip -D -m -9 -v " . $videoId . ".zip " . $outputFileName;
+        $zipOutputQuery = "mp4 -D -m -9 -v " . $videoId . ".mp4 " . $outputFileName;
         
         $videoStreamQuery = "./ffmpeg -i \"" . $videoUrl . "\" -c copy -metadata title=\"" . $videoTitle . "\" -metadata episode_id=\"" . $playlistId . "\" -metadata track=\"" . $videoId . "\" -metadata description=\"" . $videoDescription . "\" -metadata synopsis=\"" . $videoDescription . "\" " . $outputFileName;
         
